@@ -1,92 +1,90 @@
 let carts = document.querySelectorAll('.cart');
+let carrinho = document.querySelector('.offcanvas-body');
 let list_qnt = [];
-const carrinho = document.querySelector('.offcanvas-body');
 
-// Retrieve saved cart items from localStorage on page load
+// Recuperar itens do carrinho do localStorage na inicialização
 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-// Update carrinho element based on saved items (optional)
 cartItems.forEach(item => {
-  carrinho.innerHTML += `
-    <div class="cart-item">
-      <p style="justify-self:start">${item.nome}</p>
-      <p class="preco">${item.preco}</p>
-      <button class="remove-item">&#10006;</button>
-    </div>
-  `;
+    for (let i = 0; i < item.quantidade; i++) {
+        carrinho.innerHTML += `
+            <div class="cart-item">
+                <p style="justify-self:start">${item.nome}</p>
+                <p class="preco">${item.preco}</p>
+                <button class="remove-item">&#10006;</button>
+            </div>
+        `;
+        list_qnt.push(item.nome); // Adiciona o item ao contador
+    }
 });
+
+// Atualizar o contador qnt com a quantidade atual de itens no carrinho
+document.querySelector('.rounded-pill').innerHTML = list_qnt.length;
 
 carts.forEach((cart, index) => {
-  cart.addEventListener('click', () => {
-    let produtos = document.querySelectorAll('.p-name');
-    let preco = carts[index].children[0];
-    let qnt = document.querySelector('.rounded-pill')
-    list_qnt.push(produtos[index].getAttribute('key'))
-                console.log(qnt.textContent)
-                qnt.innerHTML = list_qnt.length
-    const produtoNome = produtos[index].textContent;
-    const produtoPreco = preco.textContent;
-    // Efficient quantity tracking
-    const cartItem = {
-      nome: produtoNome,
-      preco: produtoPreco,
-      quantidade: 1 // Default quantity to 1
-    };
+    cart.addEventListener('click', () => {
+        let produtos = document.querySelectorAll('.p-name');
+        let preco = carts[index].children[0];
+        const produtoNome = produtos[index].textContent;
+        const produtoPreco = preco.textContent;
 
-    updateLocalStorage(cartItem);
+        const cartItem = {
+            nome: produtoNome,
+            preco: produtoPreco,
+            quantidade: 1
+        };
 
-    // Update carrinho dynamically (optional)
-    carrinho.innerHTML += `
-      <div class="cart-item">
-        <p style="justify-self:start">${produtoNome}</p>
-        <p class="preco">${produtoPreco}</p>
-        <button class="remove-item">&#10006;</button></div>
-    `;
-    qnt.innerHTML = `${list_qnt.length}`
-  });
+        updateLocalStorage(cartItem);
+        // Adicionar o item ao carrinho
+        carrinho.innerHTML += `
+            <div class="cart-item">
+                <p style="justify-self:start">${produtoNome}</p>
+                <p class="preco">${produtoPreco}</p>
+                <button class="remove-item">&#10006;</button>
+            </div>
+        `;
+        list_qnt.push(produtoNome); // Adiciona o item ao contador
+        document.querySelector('.rounded-pill').innerHTML = list_qnt.length;
+    });
 });
 
-// Helper function to manage localStorage operations
-function updateLocalStorage(cartItem) {
-  cartItems = JSON.parse(localStorage.getItem('cartItems')) || []; // Get existing cart (avoids overwriting saved data)
-
-  const existingItemIndex = cartItems.findIndex(item => item.nome === cartItem.nome);
-
-
-  if (existingItemIndex !== -1) {
-    // Update quantity of existing item
-    cartItems[existingItemIndex].quantidade++;
-  } else {
-    // Add new item to cart
-    cartItems.push(cartItem);
-  }
-
-  localStorage.setItem('cartItems', JSON.stringify(cartItems));
-}
-
-// Add event listener for remove buttons (assuming unique class)
+// Adicionar evento de clique para remover itens
 carrinho.addEventListener('click', (event) => {
-  if (event.target.classList.contains('remove-item')) {
-    const cartItemDiv = event.target.parentElement; // Get the parent "cart-item" div
-    const produtoNome = cartItemDiv.querySelector('p').textContent; // Get product name
+    if (event.target.classList.contains('remove-item')) {
+        const cartItemDiv = event.target.parentElement; // Obtém o pai "cart-item" div
+        const produtoNome = cartItemDiv.querySelector('p').textContent; // Obtém o nome do produto
 
-    removeFromLocalStorage(produtoNome);
-    cartItemDiv.remove(); // Remove the cart item element from DOM
-    
-  }
+        removeFromLocalStorage(produtoNome);
+        cartItemDiv.remove(); // Remove o elemento do carrinho
+        list_qnt.splice(list_qnt.indexOf(produtoNome), 1); // Remove o item do contador
+        document.querySelector('.rounded-pill').innerHTML = list_qnt.length;
+    }
 });
 
-// Helper function to remove item from localStorage
-function removeFromLocalStorage(produtoNome) {
-  cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-  const itemIndex = cartItems.findIndex(item => item.nome === produtoNome);
+// Função para atualizar o localStorage com novos itens
+function updateLocalStorage(cartItem) {
+    cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const existingItemIndex = cartItems.findIndex(item => item.nome === cartItem.nome);
 
-  if (itemIndex !== -1) {
-    cartItems.splice(itemIndex, 1); // Remove the item from the array
+    if (existingItemIndex !== -1) {
+        cartItems[existingItemIndex].quantidade++;
+    } else {
+        cartItems.push(cartItem);
+    }
+
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }
 }
 
+// Função para remover itens do localStorage
+function removeFromLocalStorage(produtoNome) {
+    cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const itemIndex = cartItems.findIndex(item => item.nome === produtoNome);
 
-
-
+    if (itemIndex !== -1) {
+        if (cartItems[itemIndex].quantidade > 1) {
+            cartItems[itemIndex].quantidade--;
+        } else {
+            cartItems.splice(itemIndex, 1);
+        }
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+}
