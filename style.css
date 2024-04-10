@@ -413,3 +413,21 @@ main{
     margin:0% 3%;
     }
     }
+
+.offcanvas-body {
+  display: flex;
+  flex-direction: column;
+}
+.offcanvas-body div{
+  display: flex;
+  justify-content: space-between;
+}
+.preco{
+  color: red;
+}
+.remove_price{
+  gap: 10px;
+}
+.cart-item{
+  margin-bottom: 5px;
+}

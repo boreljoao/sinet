@@ -13,11 +13,9 @@
         <header>
             <img id="logo-sinet" src="/assets/image (1).png" alt="">
                 <a id="register" href="">Sign Up</a>
-                <button type="button" class="btn btn-light position-relative">
+                <button type="button" data-bs-toggle="offcanvas"data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" class="btn btn-light position-relative">
                     <img id="cart-buy" src="/assets/carrinho-de-compras.png" alt="">
-                    <span class="position-absolute top-10 start-10 translate-middle badge rounded-pill bg-danger">
-                      9
-                    </span>
+                    <span  class="position-absolute top-10 start-10 translate-middle badge rounded-pill bg-danger"></span>
                   </button>
             
         </header>
@@ -56,7 +54,7 @@
                         <img class="img" src="/assets/tenis.png" alt="">
                         <div class="img-info">
                           <div class="info-inner">
-                            <span class="p-name">Dunk Low Rainbow</span>
+                            <span class="p-name" key="1">Dunk Low Rainbow</span>
                             <span class="p-company">Nike</span>
                           </div>
                           <div class="a-size">tamanho disponivel : <span class="size">S , M , L , XL</span></div>
@@ -68,7 +66,39 @@
                           <div class="h-bg-inner"></div>
                         </div>
               
-                        <a class="cart" href="#">
+                        <a class="cart " data-bs-toggle="offcanvas"data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" href="#">
+                          <span class="price">R$120</span>
+                          <span class="add-to-cart">
+                            <span class="txt">Adicionar no carrinho</span>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="container page-wrapper">
+                <div class="page-inner">
+                  <div class="row">
+                    <div class="el-wrapper">
+                      <div class="box-up">
+                        <img class="img" src="/assets/tenis.png" alt="">
+                        <div class="img-info">
+                          <div class="info-inner">
+                            <span class="p-name" key="2" >Dunk Low Blue</span>
+                            <span class="p-company">Nike</span>
+                          </div>
+                          <div class="a-size">tamanho disponivel : <span class="size">S , M , L , XL</span></div>
+                        </div>
+                      </div>
+              
+                      <div class="box-down">
+                        <div class="h-bg">
+                          <div class="h-bg-inner"></div>
+                        </div>
+              
+                        <a class="cart" data-bs-toggle="offcanvas"data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" href="#">
                           <span class="price">R$120</span>
                           <span class="add-to-cart">
                             <span class="txt">Adicionar no carrinho</span>
@@ -87,7 +117,7 @@
                         <img class="img" src="/assets/tenis.png" alt="">
                         <div class="img-info">
                           <div class="info-inner">
-                            <span class="p-name">Dunk Low Blue</span>
+                            <span class="p-name" key="3">Dunk Low Red</span>
                             <span class="p-company">Nike</span>
                           </div>
                           <div class="a-size">tamanho disponivel : <span class="size">S , M , L , XL</span></div>
@@ -99,7 +129,7 @@
                           <div class="h-bg-inner"></div>
                         </div>
               
-                        <a class="cart" href="#">
+                        <a class="cart" data-bs-toggle="offcanvas"data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" href="#">
                           <span class="price">R$120</span>
                           <span class="add-to-cart">
                             <span class="txt">Adicionar no carrinho</span>
@@ -118,7 +148,7 @@
                         <img class="img" src="/assets/tenis.png" alt="">
                         <div class="img-info">
                           <div class="info-inner">
-                            <span class="p-name">Dunk Low Blue</span>
+                            <span class="p-name" key="4">Dunk Low Purple</span>
                             <span class="p-company">Nike</span>
                           </div>
                           <div class="a-size">tamanho disponivel : <span class="size">S , M , L , XL</span></div>
@@ -130,7 +160,7 @@
                           <div class="h-bg-inner"></div>
                         </div>
               
-                        <a class="cart" href="#">
+                        <a class="cart" data-bs-toggle="offcanvas"data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" href="#">
                           <span class="price">R$120</span>
                           <span class="add-to-cart">
                             <span class="txt">Adicionar no carrinho</span>
@@ -149,7 +179,7 @@
                         <img class="img" src="/assets/tenis.png" alt="">
                         <div class="img-info">
                           <div class="info-inner">
-                            <span class="p-name">Dunk Low Blue</span>
+                            <span class="p-name" key="5">Dunk Low Green</span>
                             <span class="p-company">Nike</span>
                           </div>
                           <div class="a-size">tamanho disponivel : <span class="size">S , M , L , XL</span></div>
@@ -161,7 +191,7 @@
                           <div class="h-bg-inner"></div>
                         </div>
               
-                        <a class="cart" href="#">
+                        <a class="cart" data-bs-toggle="offcanvas"data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" href="#">
                           <span class="price">R$120</span>
                           <span class="add-to-cart">
                             <span class="txt">Adicionar no carrinho</span>
@@ -180,7 +210,7 @@
                         <img class="img" src="/assets/tenis.png" alt="">
                         <div class="img-info">
                           <div class="info-inner">
-                            <span class="p-name">Dunk Low Blue</span>
+                            <span class="p-name" key="06">Dunk Low Black</span>
                             <span class="p-company">Nike</span>
                           </div>
                           <div class="a-size">tamanho disponivel : <span class="size">S , M , L , XL</span></div>
@@ -192,38 +222,7 @@
                           <div class="h-bg-inner"></div>
                         </div>
               
-                        <a class="cart" href="#">
-                          <span class="price">R$120</span>
-                          <span class="add-to-cart">
-                            <span class="txt">Adicionar no carrinho</span>
-                          </span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="container page-wrapper">
-                <div class="page-inner">
-                  <div class="row">
-                    <div class="el-wrapper">
-                      <div class="box-up">
-                        <img class="img" src="/assets/tenis.png" alt="">
-                        <div class="img-info">
-                          <div class="info-inner">
-                            <span class="p-name">Dunk Low Blue</span>
-                            <span class="p-company">Nike</span>
-                          </div>
-                          <div class="a-size">tamanho disponivel : <span class="size">S , M , L , XL</span></div>
-                        </div>
-                      </div>
-              
-                      <div class="box-down">
-                        <div class="h-bg">
-                          <div class="h-bg-inner"></div>
-                        </div>
-              
-                        <a class="cart" href="#">
+                        <a class="cart" data-bs-toggle="offcanvas"data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" href="#">
                           <span class="price">R$120</span>
                           <span class="add-to-cart">
                             <span class="txt">Adicionar no carrinho</span>
@@ -235,6 +234,16 @@
                 </div>
               </div>
             </div>
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><img id="cart-buy" src="/assets/carrinho-de-compras.png" style="display: inline;" alt="">Carrinho:</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <hr>
+                  
+                </div>
+              </div>
         </main>
         <footer>
           <div class="footer">
@@ -259,4 +268,5 @@
     </div> 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="scripts/addtocart.js"></script>
 </html>
