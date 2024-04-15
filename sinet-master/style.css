@@ -161,7 +161,7 @@ main{
 }
 
 .el-wrapper:hover .img {
-  webkit-filter: blur(7px);
+  -webkit-filter: blur(7px);
   -o-filter: blur(7px);
   -ms-filter: blur(7px);
   filter: blur(7px);
@@ -430,4 +430,19 @@ main{
 }
 .cart-item{
   margin-bottom: 5px;
+}
+
+.payment{
+  position: relative;
+  top: calc(100% - 70px);
+  
+}
+#pagar{
+  padding: 5px;
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+}
+#pagar:hover{
+  text-decoration: underline;
 }

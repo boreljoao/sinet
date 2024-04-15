@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart and Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 80%;
+        }
+
+        .cart-container,
+        .payment-container {
+            width: 48%;  /*Adjusted width for spacing */
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;  /*Centraliza itens horizontalmente */ 
+        }
+        
+
+        /*.cart-container {/*
+            order: 1; / Reordering to be on the left 
+        }*/
+
+        .payment-container {
+            order: 2; /* Reordering to be on the right */ 
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .total {
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: right;
+            width: 100%;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .vertical-line {
+            border-left: 2px solid #ccc;
+            height: 100vh;
+            margin: 0 20px;
+        }
+
+        .payment-form {
+            text-align: center;
+        }
+
+        .payment-form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .payment-form input[type="text"] {
+            padding: 10px;
+            width: calc(100% - 20px);
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .payment-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+            margin-top: 20px;
+        }
+
+        .payment-images img {
+            width: 70%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .finish-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+            
+        }
+.finish-button:hover {
+            background-color: #45a049;
+        }
+        .total{
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cart-container">
+            <h1>Cart</h1>
+            <div id="cart-items"></div>
+            <div style="border: 2px solid black; padding: 10px;" id="total-section">
+            </div>
+            <div class="total2"> 
+                <h4>Total: R$ <p class="total3" style="display: inline-block;"></p> </h4>
+            </div>
+            <div class="buttons-container">
+                <button class="button" onclick="clearCart()">Clear Cart</button>
+                <button class="button" onclick="stillPurchase()">Still Purchase</button>
+            </div>
+        </div>
+
+        <div class="vertical-line"></div> <!-- Vertical line separator -->
+
+        <div class="payment-container">
+            <h1>Payment</h1>
+            <div class="payment-form">
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" name="cpf" pattern="\d{3}.\d{3}.\d{3}-\d{2}" placeholder="123.456.789-01" required>
+
+                <label for="payment-method">Payment Method</label>
+                <div class="payment-images">
+                    <img src="/sinet-master/photos/picpay.png" alt="Visa">
+                    <img src="/sinet-master/photos/nubank.png" alt="Mastercard">
+                    <img src="/sinet-master/photos/qrcode.png" alt="American Express">
+                    <img src="/sinet-master/photos/qrcode.png" alt="PayPal">
+                </div>
+            </div>
+
+            <button class="finish-button" onclick="finishPurchase()">Finish Purchase</button>
+        </div>
+    </div>
+    
+    <script src="/sinet-master/scripts/payment.js"></script>
+</body>
+</html>
